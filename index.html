@@ -2,17 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Lyra's App</title>
+    <title>Lyra loves pixels</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main">
-    <h1>Welcome 🤡  {{heading}}</h1>
-
+    <h1>I 💘 {{heading}}</h1>
+<h2>Latest Images</h2>
     <ul v-if="images.length" class="img-container" >
         <li v-for="image in images" >
-            <img :src="image.url">
-            {{image.title}}</li>
+            <img :src="image.url"><br>
+           {{image.title}}
+        </li>
     </ul>
     </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>

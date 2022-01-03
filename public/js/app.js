@@ -3,7 +3,7 @@ import * as Vue from "./vue.js";
 Vue.createApp({
     data() {
         return {
-            heading: "Friends",
+            heading: "PIXELS",
             show: true,
             images: [],
         };
