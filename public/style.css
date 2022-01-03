@@ -1,0 +1,25 @@
+* {
+    background-color: rgb(196, 226, 211);
+}
+
+/* body {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+} */
+
+ul {
+    list-style: none;
+}
+
+.img-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    border: black 1px;
+    padding: 5px;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
