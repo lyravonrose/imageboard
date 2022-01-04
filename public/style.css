@@ -18,6 +18,7 @@ ul {
 img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 li {
@@ -25,6 +26,8 @@ li {
     padding: 10px;
     padding-bottom: 30px;
     display: block;
+    overflow: hidden;
+    height: 300px;
 }
 
 h1,

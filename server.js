@@ -8,14 +8,24 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    console.log("POST/upload.json Route");
-    console.log("req.body:", req.body);
-    console.log("req.file:", req.file);
-    if (req.file) {
-        res.json({ success: true });
-    } else {
-        res.json({ success: false });
-    }
+    // console.log("POST/upload.json Route");
+    // console.log("req.body:", req.body);
+
+    const { username, title, description } = req.body;
+    const { filename } = req.file;
+    const url = `https://onionxxib.s3.amazonaws.com/${req.file.filename}`;
+
+    // console.log("username:", req.body.username);
+    // console.log("🔴", req.file);
+
+    db.insertImages(url, username, title, description)
+        .then(({ rows }) => {
+            res.json({ success: true, data: rows[0] });
+        })
+        .catch((err) => {
+            console.log("error inserting images:", err);
+            res.json({ success: false });
+        });
 });
 
 app.get("/get-images", (req, res) => {
