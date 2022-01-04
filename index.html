@@ -7,16 +7,29 @@
 </head>
 <body>
     <div id="main">
-    <h1>I 💘 {{heading}}</h1>
-<h2>Latest Images</h2>
+        <h1>I 💘 {{heading}}</h1>
+        <h2>Latest Images</h2>
+        <form>
+            <input v-model="title" type="text" name="title" placeholder="title">
+            <input v-model="username" type="text" name="username" placeholder="username">
+            <input v-model="description" type="text" name="description" placeholder="description">
+            <input @change="fileSelectHandler"type="file" name="file" accept="image/*">
+            <button @click.prevent="clickHandler">Submit</button>
+        </form>
+        
+        <section class="image-grid">
     <ul v-if="images.length" class="img-container" >
         <li v-for="image in images" >
-            <img :src="image.url"><br>
+            <img :src="image.url" :alt="image.title"><br>
            {{image.title}}
         </li>
     </ul>
+    </section>
     </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
     
 </body>
 </html>
+
+<!-- difference between attribute and value{{}} -->
+<!-- v-on & @ are the same thing -->
