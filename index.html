@@ -2,13 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Lyra loves pixels</title>
+    <title>Lyra Von Rose Designs</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main">
-        <h1>I 💘 {{heading}}</h1>
-        <h2>Latest Images</h2>
+        <modal-component v-if="imageSelected" :image-id="imageSelected" @close="closeComponent"></modal-component>
+        <h1>{{heading}}'s Jewellery Designs</h1>
+        <h2>Work 2011-2020 ✨</h2>
         <form>
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">
@@ -20,8 +21,8 @@
         <section class="image-grid">
     <ul v-if="images.length" class="img-container" >
         <li v-for="image in images" >
-            <img :src="image.url" :alt="image.title"><br>
-           {{image.title}}
+            <img :src="image.url" @click="selectImage(image.id)" :alt="image.title"><br>
+          {{image.id}} | {{image.title}} <br> {{image.description}}
         </li>
     </ul>
     </section>

@@ -1,14 +1,18 @@
 import * as Vue from "./vue.js";
+import modalComponent from "./modalComponent.js";
 
 Vue.createApp({
     data() {
         return {
-            heading: "PIXELS",
+            heading: "Lyra",
             show: true,
             images: [],
             title: "",
             description: "",
             file: null,
+            // moods: [{id:1,title:"😀"}, {}, {}],
+            imageSelected: false,
+            closeComponent: false,
             //values in state
         };
     },
@@ -19,6 +23,9 @@ Vue.createApp({
             .then((data) => {
                 this.images = data;
             });
+    },
+    components: {
+        "modal-component": modalComponent,
     },
     methods: {
         clickHandler: function () {
@@ -45,6 +52,14 @@ Vue.createApp({
         fileSelectHandler: function (e) {
             console.log("file selected: ", e);
             this.file = e.target.files[0];
+        },
+        selectImage(clickedId) {
+            console.log("image clicked with id:", clickedId);
+            this.imageSelected = clickedId;
+        },
+        closeComponent() {
+            console.log("the component has emitted that it should be closed");
+            this.closeComponent = !this.closeComponent;
         },
     },
 }).mount("#main");

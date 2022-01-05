@@ -24,14 +24,18 @@ img {
 li {
     border: 1px rgb(139, 6, 6) solid;
     padding: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
     display: block;
     overflow: hidden;
     height: 300px;
 }
 
+input {
+    color: rgb(139, 6, 6);
+}
+
 h1,
 h2,
 form {
-    margin: 5px;
+    margin-left: 5px;
 }
