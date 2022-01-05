@@ -1,6 +1,9 @@
 * {
-    background-color: rgb(229, 182, 160);
     font-family: monospace;
+}
+
+body {
+    background-color: rgb(229, 182, 160);
 }
 
 ul {
@@ -24,7 +27,7 @@ img {
 li {
     border: 1px rgb(139, 6, 6) solid;
     padding: 10px;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
     display: block;
     overflow: hidden;
     height: 300px;
@@ -38,4 +41,31 @@ h1,
 h2,
 form {
     margin-left: 5px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 80%;
+    background-color: rgba(202, 40, 40, 0.7);
+    overflow: auto;
+}
+
+.modal img {
+    position: relative;
+    display: block;
+    width: 90%;
+    height: 350px;
+    left: 5%;
+}
+
+.modal h3 {
+    position: absolute;
+    top: -1em;
+    right: 0.5em;
+    font-size: 2em;
+    cursor: pointer;
 }

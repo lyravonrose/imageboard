@@ -10,9 +10,7 @@ Vue.createApp({
             title: "",
             description: "",
             file: null,
-            // moods: [{id:1,title:"😀"}, {}, {}],
             imageSelected: false,
-            closeComponent: false,
             //values in state
         };
     },
@@ -59,7 +57,7 @@ Vue.createApp({
         },
         closeComponent() {
             console.log("the component has emitted that it should be closed");
-            this.closeComponent = !this.closeComponent;
+            this.imageSelected = false;
         },
     },
 }).mount("#main");

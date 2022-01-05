@@ -39,6 +39,17 @@ app.get("/get-images", (req, res) => {
         });
 });
 
+app.get("/getImageById/:id", (req, res) => {
+    db.selectImage(req.params.id)
+        .then(({ rows }) => {
+            res.json(rows[0]);
+        })
+        .catch((err) => {
+            console.log("error:", err);
+            res.send({ err: true });
+        });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
