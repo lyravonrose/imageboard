@@ -37,7 +37,7 @@ const modalComponent = {
     template: `<div class="modal">
     <h2>{{heading}}'s collection</h2>
     <div>
-    <img :src="url" :alt="title"> {{title}} | {{description}} | By {{username}} <br> Posted at {{created_at}}</div>
+    <img :src="url" :alt="title"><br> {{title}} | {{description}} | By {{username}} <br><br> Posted at {{created_at}}</div>
     <h3 @click="closeComponent">X</h3>
     </div>`,
 };
