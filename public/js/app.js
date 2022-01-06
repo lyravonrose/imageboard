@@ -10,7 +10,10 @@ Vue.createApp({
             title: "",
             description: "",
             file: null,
+            username: "",
             imageSelected: false,
+            comments: "",
+            isThereMoreImages: true,
             //values in state
         };
     },
@@ -58,6 +61,24 @@ Vue.createApp({
         closeComponent() {
             console.log("the component has emitted that it should be closed");
             this.imageSelected = false;
+        },
+        getComments(imageId) {
+            console.log("image clicked with id:", imageId);
+            this.imageSelected = imageId;
+        },
+        getMoreImages() {
+            console.log("get more images");
+            fetch(`/get-more-images/${this.images[this.images.length - 1].id}`)
+                .then((res) => res.json())
+                .then((result) => {
+                    if (result[result.length - 1].id === 1) {
+                        this.isThereMoreImages = false;
+                    }
+                    this.images = [...this.images, ...result];
+                })
+                .catch((err) =>
+                    console.log("error while fetching more images:", err)
+                );
         },
     },
 }).mount("#main");

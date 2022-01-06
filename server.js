@@ -3,6 +3,7 @@ const app = express();
 const db = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
+const { IoTSecureTunneling } = require("aws-sdk");
 
 app.use(express.static("./public"));
 app.use(express.json());
@@ -39,6 +40,17 @@ app.get("/get-images", (req, res) => {
         });
 });
 
+app.get("/get-more-images/:lowestId", (req, res) => {
+    db.getMoreImages(req.params.lowestId)
+        .then(({ rows }) => {
+            res.json(rows);
+        })
+        .catch((err) => {
+            console.log("get more images error:", err);
+            res.send({ err: true });
+        });
+});
+
 app.get("/getImageById/:id", (req, res) => {
     db.selectImage(req.params.id)
         .then(({ rows }) => {
@@ -47,6 +59,27 @@ app.get("/getImageById/:id", (req, res) => {
         .catch((err) => {
             console.log("error:", err);
             res.send({ err: true });
+        });
+});
+
+app.get("/comments/:id", (req, res) => {
+    db.getComments(req.params.id)
+        .then(({ rows }) => {
+            res.json(rows);
+        })
+        .catch((err) => {
+            console.log("error:", err);
+        });
+});
+
+app.post("/comment", (req, res) => {
+    const { imageId, username, comment } = req.body;
+    db.addComments(imageId, username, comment)
+        .then(({ rows }) => {
+            res.json({ data: rows[0] });
+        })
+        .catch((err) => {
+            console.log("error inserting comments:", err);
         });
 });
 

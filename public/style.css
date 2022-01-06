@@ -24,7 +24,7 @@ img {
     object-fit: cover;
 }
 
-li {
+.image {
     border: 1px rgb(139, 6, 6) solid;
     padding: 10px;
     padding-bottom: 30px;
@@ -58,10 +58,10 @@ img:hover {
     text-align: center;
     color: white;
     text-transform: capitalize;
+    overflow-y: auto;
 }
 
 .modal img {
-    overflow: scroll;
     position: relative;
     display: block;
     width: 80%;

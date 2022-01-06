@@ -1,6 +1,9 @@
+import commentComponent from "./commentComponent.js";
+
 const modalComponent = {
     data() {
         return {
+            id: "",
             heading: "Lyra",
             title: "",
             description: "",
@@ -22,13 +25,16 @@ const modalComponent = {
                 this.description = result.description;
                 this.username = result.username;
                 this.created_at = result.created_at;
+                this.id = result.id;
             })
             .catch((err) => {
                 console.log("error: ", err);
             });
     },
+    components: {
+        "comment-component": commentComponent,
+    },
     methods: {
-        //here do something about closing
         closeComponent() {
             this.$emit("close");
         },
@@ -39,6 +45,7 @@ const modalComponent = {
     <div>
     <img :src="url" :alt="title"><br> {{title}} | {{description}} | By {{username}} <br><br> Posted at {{created_at}}</div>
     <h3 @click="closeComponent">X</h3>
+    <comment-component v-if="id" :image-id="imageId"></comment-component>
     </div>`,
 };
 

@@ -39,3 +39,15 @@ module.exports.getMoreImages = (lowestId) => {
     const params = [lowestId];
     return db.query(q, params);
 };
+
+module.exports.getComments = (imageId) => {
+    const q = `SELECT comment, username, created_at FROM comments WHERE image_id = $1 ORDER BY id DESC`;
+    const params = [imageId];
+    return db.query(q, params);
+};
+
+module.exports.addComments = (imageId, username, comment) => {
+    const q = `INSERT INTO comments (image_id, username, comment) VALUES ($1, $2, $3) RETURNING username, comment, created_at`;
+    const params = [imageId, username, comment];
+    return db.query(q, params);
+};
