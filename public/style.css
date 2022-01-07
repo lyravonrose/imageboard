@@ -39,7 +39,8 @@ input {
 
 h1,
 h2,
-form {
+form,
+.more {
     margin-left: 5px;
 }
 
@@ -57,7 +58,6 @@ img:hover {
     background-color: rgba(202, 40, 40, 0.8);
     text-align: center;
     color: white;
-    text-transform: capitalize;
     overflow-y: auto;
 }
 
