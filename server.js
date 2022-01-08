@@ -4,6 +4,7 @@ const db = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
 const { IoTSecureTunneling } = require("aws-sdk");
+const moment = require("moment");
 
 app.use(express.static("./public"));
 app.use(express.json());
@@ -54,6 +55,8 @@ app.get("/get-more-images/:lowestId", (req, res) => {
 app.get("/getImageById/:id", (req, res) => {
     db.selectImage(req.params.id)
         .then(({ rows }) => {
+            // console.log("🥟:", rows[0]);
+            rows[0].created_at = moment(rows[0].created_at).fromNow();
             res.json(rows[0]);
         })
         .catch((err) => {
@@ -65,6 +68,10 @@ app.get("/getImageById/:id", (req, res) => {
 app.get("/comments/:id", (req, res) => {
     db.getComments(req.params.id)
         .then(({ rows }) => {
+            console.log("🥤", rows);
+            rows.forEach((comment) => {
+                comment.created_at = moment(comment.created_at).fromNow();
+            });
             res.json(rows);
         })
         .catch((err) => {

@@ -59,7 +59,7 @@ const commentComponent = {
 
         <ul>
             <li v-for="savedComment in comments">
-                <strong>{{savedComment.username}}</strong>: {{savedComment.comment}} <i>(at {{savedComment.created_at}})</i>
+                <strong>{{savedComment.username}}</strong>: {{savedComment.comment}} <i>({{savedComment.created_at}})</i>
             </li>
         </ul>
     </div>
