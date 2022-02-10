@@ -19,6 +19,23 @@ CREATE TABLE comments(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO images(url) VALUES
+('https://onionxxib.s3.amazonaws.com/219PhkembeXVw7uusgDfZP2X01DgCNFi.jpg'),
+("https://onionxxib.s3.amazonaws.com/tnjTGn97FisZZ__MzgTfflqScdqfDVmK.jpg"),
+("https://onionxxib.s3.amazonaws.com/aStbqlH38U_-AwOkI3AG9Vfek8T3-6Sd.jpeg"),
+("https://onionxxib.s3.amazonaws.com/Y-G2T3diKgrykca-Bvhsjo1XEx6-qEsy.jpg"),
+("https://onionxxib.s3.amazonaws.com/rXev0Rh7MucB91F7ddf3WaSYaKncZw3x.jpg"),
+("https://onionxxib.s3.amazonaws.com/5WaDa8LZ5xZvHvCGqLOra6QKK7DFjDzz.JPG"),
+("https://onionxxib.s3.amazonaws.com/jUemar6PSqLj5aISGUFdIgEbehgMnhsM.jpeg"),
+("https://onionxxib.s3.amazonaws.com/45ObJj3kyiT_3qFnyZBlmWkXmWdkVLBV.JPG"),
+("https://onionxxib.s3.amazonaws.com/YdAYtrNu2hc7huDmBHqoIIYzpChpKYlZ.JPG"),
+("https://onionxxib.s3.amazonaws.com/dR9OEEJdiql1bSqyhVb01vHe2G0Zp7YR.jpg"),
+("https://onionxxib.s3.amazonaws.com/-bCzIrVyaTkrskk_eNEp7IFMZ7HsIguj.jpeg"),
+("https://onionxxib.s3.amazonaws.com/5glytPwguRQATXNk9QPUdv7cjpqSkIXb.jpeg"),
+("https://onionxxib.s3.amazonaws.com/3RoRxF3dlfGK5TPVdKm51Y9472fOyMP8.jpg"),
+("https://onionxxib.s3.amazonaws.com/NVIcqorJwwRw86Q1TV42cp4wZrkeF69k.jpg"),
+("https://onionxxib.s3.amazonaws.com/G35INaJRo9LeA2GthxcIYIlNkxzB_2o5.JPG");
+
 -- INSERT INTO images (url, username, title, description) VALUES (
 --     'https://s3.amazonaws.com/imageboard/jAVZmnxnZ-U95ap2-PLliFFF7TO0KqZm.jpg',
 --     'funkychicken',

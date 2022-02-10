@@ -3,8 +3,31 @@ const app = express();
 const db = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
+const cookieSession = require("cookie-session");
 const { IoTSecureTunneling } = require("aws-sdk");
 const moment = require("moment");
+
+const packageLock =
+    process.env.PACKAGE_LOCK || require("./package-lock").PACKAGE_LOCK;
+
+const secrets = process.env.SECRETS || require("./secrets").SECRETS;
+
+const cookieSessionMiddleware = cookieSession({
+    secret: secrets,
+    maxAge: 1000 * 60 * 60 * 24 * 14,
+    sameSite: true,
+});
+
+app.use(cookieSessionMiddleware);
+
+if (process.env.NODE_ENV == "production") {
+    app.use((req, res, next) => {
+        if (req.headers["x-forwarded-proto"].startsWith("https")) {
+            return next();
+        }
+        res.redirect(`https://${req.hostname}${req.url}`);
+    });
+}
 
 app.use(express.static("./public"));
 app.use(express.json());
@@ -94,4 +117,8 @@ app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
-app.listen(8080, () => console.log(`I'm listening 🧁🌸.`));
+if (require.main == module) {
+    app.listen(process.env.PORT || 8080, () =>
+        console.log(`I'm listening 🧁🌸.`)
+    );
+}
